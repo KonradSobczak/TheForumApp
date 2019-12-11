@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "307983919990",
+    "firebase_url": "https://the-forum-app.firebaseio.com",
+    "project_id": "the-forum-app",
+    "storage_bucket": "the-forum-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:307983919990:android:e4cd82bf203bfba23e6857",
+        "android_client_info": {
+          "package_name": "com.example.theforumapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "307983919990-1p8gasv3u80vi123t4fais06n1ntvli0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.theforumapp",
+            "certificate_hash": "7583729d1c7f09f6803bbd59a8aec346342da768"
+          }
+        },
+        {
+          "client_id": "307983919990-df2amkjoatg0iobuq0tacmrfo9mkep1i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDi8pETVgy2hNL1e6_KLiEFGAes5gtytQ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "307983919990-df2amkjoatg0iobuq0tacmrfo9mkep1i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
