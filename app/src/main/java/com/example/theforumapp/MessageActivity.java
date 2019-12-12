@@ -44,6 +44,7 @@ public class MessageActivity extends AppCompatActivity {
     DatabaseReference reference;
 
     Intent intent;
+    String userId;
 
     ImageButton btn_send;
     EditText text_send;
@@ -73,14 +74,17 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
-        recyclerView = findViewById(R.id.recycler_view_chat);
+        recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
 
         intent = getIntent();
-        final String userId = intent.getStringExtra("userId");
+        userId = intent.getStringExtra("userId");
+        fUser = FirebaseAuth.getInstance().getCurrentUser();
+
+
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,8 +97,7 @@ public class MessageActivity extends AppCompatActivity {
                 text_send.setText("");
             }
         });
-        fUser = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(fUser.getUid());
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(userId);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -108,6 +111,7 @@ public class MessageActivity extends AppCompatActivity {
                 }
 
                 readMessage(fUser.getUid(), userId, user.getImageURL());
+                Toast.makeText(MessageActivity.this, "Messages read for sender!" +fUser.getUid() + "And Receiver" + userId, Toast.LENGTH_SHORT).show();
 
             }
 
@@ -138,12 +142,16 @@ public class MessageActivity extends AppCompatActivity {
             mChat.clear();
             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                 Chat chat = snapshot.getValue(Chat.class);
-                if (chat.getReceiver().equals(myid) && chat.getSender().equals(userid) || chat.getReceiver().equals(userid) && chat.getSender().equals(myid))
-                    Log.d("TAGGING", "ADDED");
+                Log.d("MESSAGING", chat.getMessage());
+                Log.d("MESSAGING", chat.getReceiver());
+                Log.d("MESSAGING", chat.getSender());
+                if (chat.getReceiver().equals(myid) && chat.getSender().equals(userid) || chat.getReceiver().equals(userid) && chat.getSender().equals(myid)) {
+                    Log.d("MESSAGING", "ADDED");
                     mChat.add(chat);
-
+                }
                 messageAdapter = new MessageAdapter(MessageActivity.this, mChat, imageurl);
                 recyclerView.setAdapter(messageAdapter);
+                Toast.makeText(MessageActivity.this, String.valueOf(mChat.size()), Toast.LENGTH_SHORT).show();
             }
         }
 

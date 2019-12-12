@@ -26,14 +26,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public static final int MSG_TYPE_RIGHT = 1;
 
     private Context context;
-    private List<Chat> chat;
+    private List<Chat> mChat;
     private String imageurl;
 
     FirebaseUser user;
 
     public MessageAdapter(Context context, List<Chat> chat, String imageurl) {
         this.context = context;
-        this.chat = chat;
+        this.mChat = chat;
         this.imageurl = imageurl;
     }
 
@@ -54,9 +54,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder holder, int position) {
 
-        Chat mChat = chat.get(position);
-        Log.d("TAGGING", "Result: " + mChat.getMessage());
-        holder.show_message.setText(mChat.getMessage());
+        Chat chat = mChat.get(position);
+        holder.show_message.setText(chat.getMessage());
         if (imageurl.equals("default")) {
             holder.profile_image.setImageResource(R.mipmap.ic_launcher_round);
         } else {
@@ -68,7 +67,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return chat.size();
+        return mChat.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -88,7 +87,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     @Override
     public int getItemViewType(int position) {
         user = FirebaseAuth.getInstance().getCurrentUser();
-        if (chat.get(position).getSender().equals(user.getUid())) {
+        if (mChat.get(position).getSender().equals(user.getUid())) {
             return MSG_TYPE_RIGHT;
         } else
             return MSG_TYPE_LEFT;

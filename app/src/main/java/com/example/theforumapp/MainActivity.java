@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.theforumapp.Fragments.ChatsFragment;
+import com.example.theforumapp.Fragments.ProfileFragment;
 import com.example.theforumapp.Fragments.UsersFragment;
 import com.example.theforumapp.Model.User;
 import com.google.android.material.tabs.TabLayout;
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
         viewPagerAdapter.addFragments(new ChatsFragment(), "Chats");
         viewPagerAdapter.addFragments(new UsersFragment(), "Users");
+        viewPagerAdapter.addFragments(new ProfileFragment(), "Profile");
         viewPagerAdapter.notifyDataSetChanged();
 
 
