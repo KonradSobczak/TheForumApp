@@ -40,6 +40,7 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -82,7 +83,9 @@ public class ProfileFragment extends Fragment {
                 if (user.getImageURL().equals("default")) {
                     image_profile.setImageResource(R.mipmap.ic_launcher_round);
                 } else {
-                    Glide.with(getContext()).load(user.getImageURL()).into(image_profile);
+                    if (isAdded()) {
+                        Glide.with(Objects.requireNonNull(getActivity()).getApplicationContext()).load(user.getImageURL()).into(image_profile);
+                    }
                 }
             }
 
