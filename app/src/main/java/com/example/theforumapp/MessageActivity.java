@@ -111,7 +111,6 @@ public class MessageActivity extends AppCompatActivity {
                 }
 
                 readMessage(fUser.getUid(), userId, user.getImageURL());
-                Toast.makeText(MessageActivity.this, "Messages read for sender!" +fUser.getUid() + "And Receiver" + userId, Toast.LENGTH_SHORT).show();
 
             }
 
@@ -151,7 +150,6 @@ public class MessageActivity extends AppCompatActivity {
                 }
                 messageAdapter = new MessageAdapter(MessageActivity.this, mChat, imageurl);
                 recyclerView.setAdapter(messageAdapter);
-                Toast.makeText(MessageActivity.this, String.valueOf(mChat.size()), Toast.LENGTH_SHORT).show();
             }
         }
 

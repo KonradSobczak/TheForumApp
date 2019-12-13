@@ -119,7 +119,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
     private void lastMessage(final String userid, final TextView last_msg) {
-        last_message = "default";
+        last_message = "";
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Chats");
 
@@ -135,7 +135,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
 
                 switch (last_message) {
-                    case "default":
+                    case "":
                         last_msg.setText("No message");
 
                         default: last_msg.setText(last_message);

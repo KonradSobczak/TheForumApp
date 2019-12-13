@@ -15,10 +15,10 @@
         android:id="@+id/profile_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:textColor="@color/colorPrimaryDark"
         android:text="username"
         android:layout_marginLeft="10dp"
-        android:layout_toEndOf="@id/profile_image"
-        android:layout_centerVertical="true"
         android:textSize="18dp"
         android:layout_toRightOf="@id/profile_image"/>
 
@@ -57,7 +57,7 @@
         android:id="@+id/last_msg"
         android:layout_toRightOf="@id/profile_image"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
+        android:textStyle="italic"
         android:textColor="@color/colorPrimaryDark"
         android:text="Hello!"/>
 

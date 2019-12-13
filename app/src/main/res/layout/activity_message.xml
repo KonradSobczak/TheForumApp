@@ -17,20 +17,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/toolbar"
-            android:background="@color/design_default_color_primary_dark"
+            android:background="@color/colorPrimary"
             >
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:id="@+id/profile_image"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/username"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:textSize="20dp"
                 android:text="username"
-                android:layout_marginLeft="25dp"/>
+                android:layout_marginLeft="35dp"/>
 
         </androidx.appcompat.widget.Toolbar>
 
