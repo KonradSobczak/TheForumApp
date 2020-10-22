@@ -7,6 +7,7 @@ public class User {
     private String imageURL;
     private String status;
     private String search;
+    private String access;
 
     public String getStatus() {
         return status;
@@ -24,12 +25,21 @@ public class User {
         this.search = search;
     }
 
-    public User(String id, String username, String imageURL, String status, String search) {
+    public void setAccess(String access) {
+        this.access = access;
+    }
+
+    public String getAccess() {
+        return access;
+    }
+
+    public User(String id, String username, String imageURL, String status, String search, String access) {
         this.id = id;
         this.username = username;
         this.imageURL = imageURL;
         this.status = status;
         this.search = search;
+        this.access = access;
     }
 
     public User() {

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#e6e6e6"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/toolbar"
+                android:background="@color/colorPrimary"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/username"
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:textSize="20dp"
+                    android:text="username"
+                    android:layout_marginLeft="35dp"/>
+
+            </androidx.appcompat.widget.Toolbar>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <TextView
+            android:id="@+id/basicInfoView"
+            android:padding="20dp"
+            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/bar_layout"
+            android:textColor="@color/design_default_color_primary"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:layout_height="wrap_content"
+            android:text="Basic information:" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/autoFillBtn"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Click here to auto-fill current device data"
+            android:textColor="@color/green"
+            android:clickable="true"
+            android:layout_below="@id/bar_layout"
+            android:layout_alignParentRight="true"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/basicInfoView"
+            android:id="@+id/layout_data1"
+            android:gravity="center"
+            android:layout_marginTop="-1dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@color/design_default_color_primary"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Issue title"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:inputType="textCapWords"
+                android:id="@+id/issueTitleText"/>
+
+            <TextView
+                android:id="@+id/deviceModelView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/design_default_color_primary"
+                android:paddingTop="20dp"
+                android:text="Device Model" />
+
+            <EditText
+                android:id="@+id/deviceModelText"
+                android:layout_width="100dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/currentyBinaryView"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/design_default_color_primary"
+                android:layout_height="wrap_content"
+                android:text="Current binary"/>
+
+            <EditText
+                android:id="@+id/currentBinaryText"
+                android:layout_width="100dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/issueTypeView"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/design_default_color_primary"
+                android:layout_height="wrap_content"
+                android:text="Issue type"/>
+
+            <Spinner
+                android:id="@+id/issueTypeSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:entries="@array/issue_type" />
+
+            <TextView
+                android:id="@+id/occurenceView"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/design_default_color_primary"
+                android:layout_height="wrap_content"
+                android:text="Occurence"/>
+
+            <Spinner
+                android:id="@+id/occurenceSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:entries="@array/occurence" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@color/design_default_color_primary"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:text="Device OS"/>
+
+            <EditText
+                android:layout_width="50dp"
+                android:id="@+id/osEdit"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"/>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/design_default_color_primary"
+                android:layout_marginTop="10dp"
+                android:text="Sales Code"/>
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:id="@+id/salesCodeEdit"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/design_default_color_primary"
+                android:layout_marginTop="10dp"
+                android:text="Device Serial Number"/>
+
+            <EditText
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:id="@+id/serialNumberEdit"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/design_default_color_primary"
+                android:text="Choose Samsung engineer"/>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:id="@+id/engineerSpinner"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/design_default_color_primary"
+                android:text="Add 3 attachments"/>
+
+
+
+            <Button
+                android:id="@+id/attachBtn1"
+                android:layout_width="60dp"
+                android:layout_gravity="center"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:textSize="10sp"
+                android:text="attach" />
+
+            <TextView
+                android:id="@+id/attachment1"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/design_default_color_primary"
+                android:text="No attachment"/>
+
+            <Button
+                android:id="@+id/attachBtn2"
+                android:layout_width="60dp"
+                android:layout_gravity="center"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:textSize="10sp"
+                android:text="Attach" />
+
+            <TextView
+                android:id="@+id/attachment2"
+                android:layout_below="@id/layout_data1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:textColor="@color/design_default_color_primary"
+                android:text="No attachment"/>
+
+            <Button
+                android:id="@+id/attachBtn3"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:textSize="10sp"
+                android:text="Attach" />
+
+            <TextView
+                android:id="@+id/attachment3"
+                android:layout_below="@id/layout_data1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:textColor="@color/design_default_color_primary"
+                android:text="No attachment"/>
+
+
+
+
+
+
+
+            <TextView
+                android:id="@+id/issueDescriptionView"
+                android:layout_below="@id/layout_data1"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/design_default_color_primary"
+                android:text="Issue description"/>
+
+            <EditText
+                android:id="@+id/issueDescriptionText"
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/issueDescriptionView"
+                android:layout_height="wrap_content"
+                android:ems="10"
+
+                android:gravity="start|top"
+                android:inputType="textMultiLine" />
+
+            <Button
+                android:id="@+id/createThreadButton"
+                android:layout_below="@id/issueDescriptionText"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/design_default_color_primary"
+                android:layout_height="wrap_content"
+                android:text="Create ticket"/>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+
+
+</ScrollView>

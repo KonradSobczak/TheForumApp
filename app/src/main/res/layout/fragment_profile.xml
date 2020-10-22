@@ -8,6 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
+        android:id="@+id/profileCard"
         android:layout_height="wrap_content">
 
         <RelativeLayout
@@ -33,6 +34,142 @@
                 android:textSize="20sp"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"/>
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_below="@id/profileCard"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:padding="30dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/adminStatusText"
+                android:text="Admin status"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/adminStatusText"
+                android:id="@+id/adminStatus"
+                android:text="Enabled"
+
+                />
+
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="20dp"
+                android:id="@+id/adminToggleText"
+                android:layout_marginTop="25dp"
+                android:layout_below="@id/adminStatusText"
+                android:text="Admin toggle"
+                />
+
+            <Button
+                android:id="@+id/adminToggle"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="CLICK"
+                android:textSize="8dp"
+                android:layout_below="@id/adminStatusText"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/licenseToggleText" />
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/licenseStatusText"
+                android:paddingRight="50dp"
+                android:layout_below="@id/adminToggle"
+                android:layout_marginTop="25dp"
+                android:text="Activate license"
+                />
+
+            <Button
+                android:id="@+id/activateLicensee"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="CLICK"
+                android:textSize="8dp"
+                android:layout_below="@id/adminToggle"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@id/licenseToggleText" />
+
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/licenseToggleText"
+                android:layout_marginTop="25dp"
+                android:layout_below="@id/licenseStatusText"
+                android:paddingRight="50dp"
+                android:text="Deactivate license"
+                />
+
+            <Button
+                android:id="@+id/deactivateLicense"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@id/activateLicensee"
+                android:text="CLICK"
+                android:textSize="8dp"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@id/licenseToggleText" />
+
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/enableAdbStateText"
+                android:layout_marginTop="25dp"
+                android:layout_below="@id/enableUsbDebugging"
+                android:text="Set enable ADB state to true"/>
+
+            <Button
+                android:id="@+id/enableAdbBtn"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="CLICK"
+                android:textSize="8dp"
+                android:layout_below="@id/setUsbDebugging"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@id/licenseToggleText" />
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/enableUsbDebugging"
+                android:layout_marginTop="25dp"
+                android:layout_below="@id/deactivateLicense"
+                android:text="Set USB debugging to true"/>
+
+            <Button
+                android:id="@+id/setUsbDebugging"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@id/deactivateLicense"
+                android:text="CLICK"
+                android:textSize="8dp"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@id/licenseToggleText" />
+
+
+
         </RelativeLayout>
 
 

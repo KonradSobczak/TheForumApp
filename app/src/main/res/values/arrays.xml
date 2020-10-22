@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="issue_type">
+        <item>Hardware</item>
+        <item>Software</item>
+    </string-array>
+
+    <string-array name="occurence">
+        <item>Always</item>
+        <item>Sometimes</item>
+    </string-array>
+
+    <string-array name="access">
+        <item>Customer</item>
+        <item>Engineer</item>
+    </string-array>
+
+    <string-array name="resolution">
+        <item>Fixed</item>
+        <item>3rd party issue</item>
+        <item>No reproduction</item>
+    </string-array>
+</resources>

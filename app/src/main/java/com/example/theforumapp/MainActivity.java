@@ -12,6 +12,8 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.renderscript.Sampler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +23,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.theforumapp.Fragments.ChatsFragment;
 import com.example.theforumapp.Fragments.ProfileFragment;
+import com.example.theforumapp.Fragments.ThreadFragment;
 import com.example.theforumapp.Fragments.UsersFragment;
 import com.example.theforumapp.Model.User;
 import com.google.android.material.tabs.TabLayout;
@@ -41,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     CircleImageView profile_image;
     TextView username;
-
+    private ViewPagerAdapter viewPagerAdapter;
     FirebaseUser firebaseUser;
     DatabaseReference reference;
 
@@ -62,7 +65,11 @@ public class MainActivity extends AppCompatActivity {
                 User user = dataSnapshot.getValue(User.class);
                 username.setText(user.getUsername());
                 if (user.getImageURL().equals("default")) {
-                    profile_image.setImageResource(R.mipmap.ic_launcher_round);
+                    if (user.getAccess().equals("engineer")) {
+                        profile_image.setImageResource(R.drawable.knox_logo);
+                    } else {
+                        profile_image.setImageResource(R.drawable.customer_logo);
+                    }
                 } else {
                     Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
                 }
@@ -76,12 +83,29 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         ViewPager viewPager = findViewById(R.id.view_pager);
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(viewPagerAdapter);
+        viewPagerAdapter.notifyDataSetChanged();
         tabLayout.setupWithViewPager(viewPager);
-        viewPagerAdapter.addFragments(new ChatsFragment(), "Chats");
-        viewPagerAdapter.addFragments(new UsersFragment(), "Users");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                 if (!user.getAccess().equals("customer")) {
+                     viewPagerAdapter.addFragments(new ChatsFragment(), "Chats");
+                     viewPagerAdapter.addFragments(new UsersFragment(), "Users");
+                     viewPagerAdapter.notifyDataSetChanged();
+                 }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         viewPagerAdapter.addFragments(new ProfileFragment(), "Profile");
+        viewPagerAdapter.addFragments(new ThreadFragment(), "Threads");
         viewPagerAdapter.notifyDataSetChanged();
 
 
@@ -90,8 +114,25 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+    public boolean onCreateOptionsMenu(final Menu menu) {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                if (user.getAccess().equals("customer")) {
+                    getMenuInflater().inflate(R.menu.menu, menu);
+                } else {
+                    getMenuInflater().inflate(R.menu.menu_engineer, menu);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         return true;
     }
 
@@ -102,6 +143,12 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(MainActivity.this, StartActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 return true;
+            case R.id.createThread:
+                startActivity(new Intent(MainActivity.this, CreateThreadActivity.class));
+                return true;
+
+            case R.id.archievedthreads:
+                startActivity(new Intent(MainActivity.this, ArchievedThreadListActivity.class));
         }
         return false;
     }
@@ -140,29 +187,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void status(String status) {
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
-        HashMap<String, Object> hashmap = new HashMap<>();
-        hashmap.put("status", status);
 
-        reference.updateChildren(hashmap);
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        status("online");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        status("offline");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        status("offline");
-    }
 }

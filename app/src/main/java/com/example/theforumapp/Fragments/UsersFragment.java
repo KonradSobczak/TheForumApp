@@ -82,7 +82,7 @@ public class UsersFragment extends Fragment {
                     User user = snapshot.getValue(User.class);
                     assert user != null;
                     assert fuser != null;
-                    if (!user.getId().equals(fuser.getUid())) {
+                    if (!user.getId().equals(fuser.getUid()) && user.getAccess().equals("engineer")) {
                         users.add(user);
                     }
 
@@ -111,7 +111,7 @@ public class UsersFragment extends Fragment {
                     users.clear();
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         User user = snapshot.getValue(User.class);
-                        if (!user.getId().equals(firebaseUser.getUid())) {
+                        if (!user.getId().equals(firebaseUser.getUid() )&& user.getAccess().equals("engineer")) {
                             users.add(user);
                         }
                     }

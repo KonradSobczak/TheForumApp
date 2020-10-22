@@ -13,24 +13,51 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="60dp"
-        android:padding="35dp"
+        android:layout_marginTop="15dp"
         android:gravity="center_horizontal"
         android:layout_below="@id/toolbar"
-        android:layout_height="300dp">
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:src="@drawable/samsung_logo"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Create a new account"
             android:textColor="@color/colorPrimary"
-            android:textSize="20dp"
+            android:textSize="30dp"
+            android:layout_marginBottom="30dp"
             android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="-15dp"
+            android:text="Account type"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:layout_marginBottom="10dp"
+            android:textStyle="bold"/>
+
+        <Spinner
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:id="@+id/accessSpinner"
+            android:layout_gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:entries="@array/access"
+            />
 
         <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary"
+            android:layout_margin="15dp"
         android:id="@+id/usernameRegistration"
         android:hint="Username"
         />
@@ -38,6 +65,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="15dp"
             android:textColor="@color/colorPrimary"
             android:inputType="textEmailAddress"
             android:id="@+id/emailRegistration"
@@ -48,18 +76,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
+            android:layout_margin="15dp"
             android:textColor="@color/colorPrimary"
             android:clickable="true"
             android:id="@+id/passwordRegistration"
             android:hint="Password"
             />
 
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_margin="15dp"
             android:text="Register"
             android:id="@+id/btn_register"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/colorPrimary"
             android:textColor="#fff"/>
 
 

@@ -10,6 +10,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +30,7 @@ public class RegistrationActivity extends AppCompatActivity {
     EditText username;
     EditText email;
     EditText password;
+    Spinner accessSpiner;
     Toolbar toolbar;
     Button btn_register;
     private FirebaseAuth firebaseAuth;
@@ -37,6 +40,7 @@ public class RegistrationActivity extends AppCompatActivity {
         username = findViewById(R.id.usernameRegistration);
         email = findViewById(R.id.emailRegistration);
         toolbar = findViewById(R.id.toolbar);
+        accessSpiner = findViewById(R.id.accessSpinner);
         password = findViewById(R.id.passwordRegistration);
         btn_register = findViewById(R.id.btn_register);
     }
@@ -56,20 +60,21 @@ public class RegistrationActivity extends AppCompatActivity {
                 String txt_username = username.getText().toString();
                 String txt_email = email.getText().toString();
                 String txt_password = password.getText().toString();
+                String txt_access = accessSpiner.getSelectedItem().toString();
                 
                 if (TextUtils.isEmpty(txt_username) || TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)) {
                     Toast.makeText(RegistrationActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
                 } else if (txt_password.length() < 6) {
                     Toast.makeText(RegistrationActivity.this, "Password must be at least 6 symbols", Toast.LENGTH_SHORT).show();
                 } else {
-                    registerAccount(txt_username, txt_email, txt_password);
+                    registerAccount(txt_access.toLowerCase(), txt_username, txt_email, txt_password);
                 }
 
             }
         });
     }
 
-    private void registerAccount(final String username, String email, String password) {
+    private void registerAccount(final String access, final String username, String email, String password) {
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -83,6 +88,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     hashMap.put("username", username);
                     hashMap.put("imageURL", "default");
                     hashMap.put("search", username.toLowerCase());
+                    hashMap.put("access", access);
 
                     reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

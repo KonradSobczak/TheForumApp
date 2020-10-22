@@ -17,7 +17,12 @@
         android:padding="35dp"
         android:gravity="center_horizontal"
         android:layout_below="@id/toolbar"
-        android:layout_height="300dp">
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="75dp"
+            android:src="@drawable/samsung_logo"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -52,7 +57,7 @@
             android:clickable="true"
             android:id="@+id/btn_login"
 
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/colorPrimary"
             android:textColor="#fff"/>
 
         <TextView
@@ -63,7 +68,7 @@
             android:layout_margin="10dp"
             android:layout_gravity="end"
             android:id="@+id/forgotPassword"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorPrimary"
             android:textStyle="bold"
             />
 
